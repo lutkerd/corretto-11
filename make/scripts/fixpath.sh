@@ -24,6 +24,8 @@
 # questions.
 #
 
+set -x
+
 # Setup the environment fixpath assumes. Read from command line options if
 # available, or extract values automatically from the environment if missing.
 # This is robust, but slower.
