@@ -43,7 +43,8 @@ task configureBuild(type: Exec) {
     def command = ['bash', 'configure',
            "--with-cacerts-file=${depsMap[caCerts]}",
            "--with-boot-jdk=${project.getProperty('bootjdk_dir')}",
-           "--with-zlib=bundled"
+           "--with-zlib=bundled",
+           "--with-import-modules=no"
     ]
     // Common flags
     command += project.correttoCommonFlags
