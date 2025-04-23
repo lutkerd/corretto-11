@@ -55,7 +55,7 @@ task executeBuild(type: Exec) {
     dependsOn configureBuild
     workingDir "$buildRoot"
 
-    commandLine 'make', "LOG=trace", "JOBS=1", 'images', 'test-image-hotspot-jtreg-native', 'test-image-jdk-jtreg-native'
+    commandLine 'make', 'images', 'test-image-hotspot-jtreg-native', 'test-image-jdk-jtreg-native'
 }
 
 task copyImage(type: Copy) {
