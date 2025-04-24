@@ -54,7 +54,7 @@ task executeBuild(type: Exec) {
     dependsOn configureBuild
     workingDir "$buildRoot"
 
-    commandLine 'make', 'LOGS=trace', 'JOBS=1', 'jdk.cryto.ec'
+    commandLine 'make', 'LOG=trace', 'JOBS=1', 'images'
 }
 
 task copyImage(type: Copy) {
