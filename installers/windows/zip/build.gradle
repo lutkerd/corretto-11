@@ -43,8 +43,7 @@ task configureBuild(type: Exec) {
     def command = ['bash', 'configure',
            "--with-cacerts-file=${depsMap[caCerts]}",
            "--with-boot-jdk=${project.getProperty('bootjdk_dir')}",
-           "--with-zlib=bundled",
-           "--with-import-modules=no"
+           "--with-zlib=bundled"
     ]
     // Common flags
     command += project.correttoCommonFlags
@@ -55,7 +54,7 @@ task executeBuild(type: Exec) {
     dependsOn configureBuild
     workingDir "$buildRoot"
 
-    commandLine 'make', 'images', 'test-image-hotspot-jtreg-native', 'test-image-jdk-jtreg-native'
+    commandLine 'make', 'LOGS=trace', 'JOBS=1', 'jdk.cryto.ec'
 }
 
 task copyImage(type: Copy) {
