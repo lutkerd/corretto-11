@@ -54,7 +54,7 @@ task executeBuild(type: Exec) {
     dependsOn configureBuild
     workingDir "$buildRoot"
 
-    commandLine 'make', 'LOG=trace', 'JOBS=1', 'images'
+    commandLine 'make', 'images'
 }
 
 task copyImage(type: Copy) {
