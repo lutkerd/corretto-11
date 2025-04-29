@@ -39,13 +39,16 @@ AC_DEFUN_ONCE([SRCDIRS_SETUP_IMPORT_MODULES],
   AC_ARG_WITH(import-modules, [AS_HELP_STRING([--with-import-modules],
       [import a set of prebuilt modules either as a zip file or an exploded directory])])
 
+  echo "1 $with_import_modules"
   if test "x$with_import_modules" != x \
       && test "x$with_import_modules" != "xno"; then
     if test -d "$with_import_modules"; then
       IMPORT_MODULES_TOPDIR="$with_import_modules"
       UTIL_FIXUP_PATH([IMPORT_MODULES_TOPDIR])
+      echo "2 $IMPORT_MODULES_TOPDIR"
     elif test -e "$with_import_modules"; then
       IMPORT_MODULES_TOPDIR="$CONFIGURESUPPORT_OUTPUTDIR/import-modules"
+      echo "3 $IMPORT_MODULES_TOPDIR"
       $RM -rf "$IMPORT_MODULES_TOPDIR"
       $MKDIR -p "$IMPORT_MODULES_TOPDIR"
       if ! $UNZIP -q "$with_import_modules" -d "$IMPORT_MODULES_TOPDIR"; then
@@ -58,6 +61,7 @@ AC_DEFUN_ONCE([SRCDIRS_SETUP_IMPORT_MODULES],
 
   if test -d "$IMPORT_MODULES_TOPDIR/modules"; then
     IMPORT_MODULES_CLASSES="$IMPORT_MODULES_TOPDIR/modules"
+    echo "4 $IMPORT_MODULES_CLASSES"
   fi
   if test -d "$IMPORT_MODULES_TOPDIR/modules_cmds"; then
     IMPORT_MODULES_CMDS="$IMPORT_MODULES_TOPDIR/modules_cmds"
